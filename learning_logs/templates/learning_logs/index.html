@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+{%block header%}
+	<div class="jumbotron">
+		<h2>跟踪你的学习</h2>
+	</div>
+{% endblock header %}
+{% block content %}
+<h3>
+<a href="{%url 'users:register' %}">注册</a>可以跟踪你的学习,可以创建任意的主题
+</h3>
+<p class="lead">
+添加一些关于学习的主题，主题可以添加不限制的条目进行跟踪学习。
+</p>
+
+{% endblock content %}
