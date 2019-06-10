@@ -44,6 +44,16 @@ def new_topic(request):
 	return render(request,'learning_logs/new_topic.html',context)
 
 @login_required
+def del_topic(request,topic_id):
+	"""删除主题"""
+	deltopic = Topic.objects.filter(owner=request.user).get(id=topic_id).delete()
+	if deltopic:
+		return HttpResponseRedirect(reverse('learning_logs:topics'))
+	context = {"deltopic":deltopic}
+	return render(request,'learning_logs/topics.html',context)
+
+
+@login_required
 def new_entry(request,topic_id):
 	topic=Topic.objects.get(id=topic_id)
 	if request.method != 'POST':

@@ -7,17 +7,45 @@
 
 
 {% block content %}
-<ul>
-	{% for topic in topics%}
-	<li>
-		<h3>
-		<a href="{%url 'learning_logs:topic' topic.id %}">{{topic}}</a>
-		</h3>
-	</li>
-	{% empty %}
-	<li>没有创建任何主题</li>
-	{% endfor %}
-</ul>
+{#<ul>#}
+{#	{% for topic in topics%}#}
+{#	<li>#}
+{#		<h3>#}
+{#		<a href="{%url 'learning_logs:topic' topic.id %}">{{topic}}</a>#}
+{#            {% buttons %}#}
+{#                <h4><button class="btn btn-danger"><a href={%url "learning_logs:del_topic" topic.id %}>删除</a></button></h4>#}
+{#            {% endbuttons %}#}
+{#		</h3>#}
+{#	</li>#}
+{#	{% empty %}#}
+{#	<li>没有创建任何主题</li>#}
+{#	{% endfor %}#}
+{##}
+{#</ul>#}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>主题id</th>
+          <th>主题名称</th>
+          <th>删除选项</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for topic in topics%}
+        <tr>
+          <th scope="row">{{ topic.id }}</th>
+          <td><a href="{%url 'learning_logs:topic' topic.id %}">{{topic}}</a></td>
+          <td>
+              {% buttons %}
+                <h4><button class="btn btn-danger"><a href={%url "learning_logs:del_topic" topic.id %}>删除</a></button></h4>
+              {% endbuttons %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
 <h3><a href={%url "learning_logs:new_topic"%}>新建主题</a></h3>
+
 {% endblock content %}
 

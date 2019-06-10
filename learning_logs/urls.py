@@ -12,6 +12,8 @@ urlpatterns = [
 	url(r'^topics/(?P<topic_id>\d+)/$',views.topic,name='topic'),
 	#实现添加主题
 	url(r'^new_topic/$',views.new_topic,name='new_topic'),
+	#删除主题
+	url(r'^del_topic/(?P<topic_id>\d+)/$',views.del_topic,name='del_topic'),
 	#实现添加条目
 	url(r'^new_entry/(?P<topic_id>\d+)/$',views.new_entry,name='new_entry'),
 	#实现编辑条目
